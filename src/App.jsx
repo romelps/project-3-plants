@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import * as PlantService from './services/plantService'
+import * as PlantService from './Services/plantService'
 import Home from './components/Homepage/home'
 import Nav from './components/Navbar/navbar'
 import Show from './components/Show/show'
@@ -9,9 +9,9 @@ import './App.css'
 
 function App() {
 const handleAddPlant = async (plant) => {
-  try {
+  
     const newPlant = await PlantService.create(plant)
-  }
+  
 }
 
   return (
