@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import * as PlantService from './services/plantService'
+import { useState, useEffect } from 'react'
+import * as PlantService from './Services/plantService'
 import Home from './components/Homepage/home'
 import Nav from './components/Navbar/navbar'
 import Show from './components/Show/show'
@@ -9,15 +9,12 @@ import './App.css'
 
 
 
-function App() {
+const App = () => {
   const [plant, setPlant] = useState({})
-const handleAddPlant = async (plant) => {
-    const newPlant = await PlantService.create(plant)
-}
-
-
-//handles the changes in the search bar
-
+  const [plantList, setPlantList] = useState([]);
+  
+  
+ //handles the changes in the search bar
 const handleInputChange = (event) => {
   setSearch(event.target.value)
 }
@@ -30,10 +27,36 @@ const handleSearch = async () => {
 
 }
 
+  useEffect(() => {
+    const fetchPlants = async () => {
+      try {
+        const plants = await plantService.index();
+        setPlantList(plants);
+      } catch (err) {
+        console.log(err)
+      }
+    };
+    fetchPlants();
+  }, []);
+
+  const handleAddPlant = async (plant) => {
+    
+    await PlantService.create(plant)
+    
+  }
+
+
   return (
     <>
       <Nav />
-      <Home id='home' />
+      
+      <main>
+        <ul>
+          {plantList.map((plant) => (
+            <Home id='home' plant = {plant}/>
+          ))}
+        </ul>
+      </main>
       <Create id='create' />
       <Show id='show' />
       <Search id='search' 
