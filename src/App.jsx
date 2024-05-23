@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import PlantService from './Services/plantService'
 import Home from './components/Homepage/home'
 import Nav from './components/Navbar/navbar'
-import Show from './components/Show/show'
+// import Show from './components/Show/show'
 import Create from './components/Create/create'
 import Search from './components/SearchBar/search'
 import SearchResult from './components/SearchResult/SearchResult'
@@ -18,12 +18,15 @@ const App = () => {
   const [plantList, setPlantList] = useState([]);
   const [search, setSearch] = useState('')
   const [searchPlants, setSearchPlants] = useState(null);
+  const [showSearch, setShowSearch] = useState(false);
 
   
  //handles the changes in the search bar
 const handleInputChange = (event) => {
   setSearch(event.target.value)
 }
+
+
 
 const handleSearch = async () => {
   const URL = `http://3.141.46.99:3015/plants/${search}`
@@ -57,7 +60,10 @@ const handleSearch = async () => {
 
   return (
     <>
-      <Nav />
+      <Nav 
+      showSearch={showSearch}
+      setShowSearch={setShowSearch}
+      />
       
       <main>
         <ul>
@@ -67,20 +73,21 @@ const handleSearch = async () => {
         </ul>
       </main>
       <Create id='create' />
-      <Show 
+      {/* <Show 
       id='show' 
       plant = {plant}
       name= {plant.name}
       size= {plant.size}
       health= {plant.health}
       family= {plant.family}
-      />
+      /> */}
+      {showSearch ?
       <Search
         id='search'
         handleInputChange={handleInputChange} 
         handleSearch={handleSearch} 
         searchPlants={searchPlants}
-      />
+      />: null}
 
       {searchPlants ? 
       <SearchResult
@@ -91,4 +98,4 @@ const handleSearch = async () => {
   )
 }
 
-export default App
+export default App;

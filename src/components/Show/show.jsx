@@ -1,18 +1,15 @@
 import {useState} from 'react';
 
 
-const Show = (props) => {
-    const {plant} = props;
-    
+const Show = ({plant}) => {
     return(
        <>
-       <div key={plant.id}>
-       <h2>{plant.name}</h2>
-       <p>{plant.family}</p>
-       <p>{plant.size}</p>
-       <p>{plant.health}</p>
-
-       </div>
+       <ul>
+        <h2>Name: {plant.name}</h2>
+        <p>Size: {plant.size}</p>
+        <p>Health: {plant.health}</p>
+        <p>Family: {plant.family}</p>
+       </ul>
        </>
     )
 }

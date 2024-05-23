@@ -4,10 +4,10 @@ const SearchResult = ({ searchPlants }) => {
         <div>
             <h2>Search Results</h2>
             <ul>
-                {searchPlants.name}<br />
-                {searchPlants.size}<br />
-                {searchPlants.health}<br />
-                {searchPlants.family}<br />
+                <p>Name: {searchPlants.name}</p>
+                <p>Size: {searchPlants.size}</p>
+                <p>Health: {searchPlants.health}</p>
+                <p>Family: {searchPlants.family}</p>
             </ul>
         </div>
     )
