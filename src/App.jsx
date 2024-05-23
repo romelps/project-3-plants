@@ -7,11 +7,27 @@ import Create from './components/Create/create'
 
 import './App.css'
 
+
+
 function App() {
+  const [plant, setPlant] = useState({})
 const handleAddPlant = async (plant) => {
-  try {
     const newPlant = await PlantService.create(plant)
-  }
+}
+
+
+//handles the changes in the search bar
+
+const handleInputChange = (event) => {
+  setSearch(event.target.value)
+}
+
+const handleSearch = async () => {
+  const URL = `${BASE_URL}/${search}`
+  const res = await fetch(URL);
+  const returnData = await res.json();
+  setPlants(returnData.results);
+
 }
 
   return (
@@ -20,6 +36,10 @@ const handleAddPlant = async (plant) => {
       <Home id='home' />
       <Create id='create' />
       <Show id='show' />
+      <Search id='search' 
+        handleInputChange={handleInputChange} 
+        handleSearch={handleSearch} 
+      />
     </>
   )
 }
