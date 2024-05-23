@@ -26,7 +26,6 @@ const Create = ({handleAddPlant}) => {
                 id="size"
                 value={plant.size}
             />
-
             <label htmlFor="health">Health: </label>
             <input
                 type="text"
