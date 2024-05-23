@@ -1,16 +1,16 @@
 import { useState } from 'react'
 
-const Create = () => {
+const Create = ({handleAddPlant}) => {
 
     const [plant, setPlant] = useState({
         name: '',
         size: '',
         health: '',
-
+        family: '',
     })
 
     return(
-        <form onSubmit={ () => handle}>
+        <form onSubmit={ () => handleAddPlant(plant)}>
             <label htmlFor="name">Name: </label>
             <input
                 type="text"
@@ -33,6 +33,14 @@ const Create = () => {
                 name="health"
                 id="health"
                 value={plant.health}
+            />
+
+            <label htmlFor="family">Plant Family: </label>
+            <input
+                type="text"
+                name="family"
+                id="family"
+                value={plant.family}
             />
 
             <button type="submit">Plant Seed</button>
