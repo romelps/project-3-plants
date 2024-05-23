@@ -7,11 +7,25 @@ import Create from './components/Create/create'
 
 import './App.css'
 
-const App = () => {
 
+
+const App = () => {
+  const [plant, setPlant] = useState({})
   const [plantList, setPlantList] = useState([]);
   
+  
+ //handles the changes in the search bar
+const handleInputChange = (event) => {
+  setSearch(event.target.value)
+}
 
+const handleSearch = async () => {
+  const URL = `${BASE_URL}/${search}`
+  const res = await fetch(URL);
+  const returnData = await res.json();
+  setPlants(returnData.results);
+
+}
 
   useEffect(() => {
     const fetchPlants = async () => {
@@ -31,6 +45,7 @@ const App = () => {
     
   }
 
+
   return (
     <>
       <Nav />
@@ -44,6 +59,10 @@ const App = () => {
       </main>
       <Create id='create' />
       <Show id='show' />
+      <Search id='search' 
+        handleInputChange={handleInputChange} 
+        handleSearch={handleSearch} 
+      />
     </>
   )
 }
