@@ -4,7 +4,7 @@ const Home = (props) => {
 
     return(
         <>
-        <h1>Welcome to your garden </h1>
+        
         <li>
             <h3>{plant.name}</h3>
         </li>

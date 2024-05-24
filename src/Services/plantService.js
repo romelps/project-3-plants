@@ -9,13 +9,14 @@ const index = async() => {
     }
 };
 
-// const create = async (formData) => {
-//     try {
-//         const res = await fetch(BASE_URL, )
-//     } catch(err){
-//         console.log('Caught error')
-//     }
-// }
+const create = async (formData) => {
+    try {
+        const res = await fetch(BASE_URL)
+    } catch(err){
+        console.log('Caught error')
+    }
+}
 
 
-export default {index};
+export { index, create }
+
