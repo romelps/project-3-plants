@@ -33,7 +33,6 @@ const Create = ({handleAddPlant}) => {
                 value={plant.size}
                 onChange={handleChange}
             />
-
             <label htmlFor="health">Health: </label>
             <input
                 type="text"
