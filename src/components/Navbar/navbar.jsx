@@ -19,12 +19,12 @@ const Nav = ({showSearch, setShowSearch, isCreateOpen, setIsCreateOpen}) => {
                 <ul>
 
                     <button><a href='#home'>Garden</a></button>
-                    <button onClick={props.handleCreateView}><a href='#create'>
-                        {props.isCreateOpen ? 'Dig Up Seed' : 'Plant Seed'}
+                    <button onClick={handleCreateView}><a href='#create'>
+                        {isCreateOpen ? 'Dig Up Seed' : 'Plant Seed'}
                     </a></button>
         
                     <button id="search" onClick={handleSearchOnClick}>Search</button>
-
+                    <button id="update">Update</button>
                 </ul>
             </nav>        
         </>

@@ -16,7 +16,16 @@ const create = async (formData) => {
         console.log('Caught error')
     }
 }
+//for button onClick in index showcards to show the single card upon clicking
+// const showfetch = async (id) => {
+//     try {
+//         const res = await fetch(`${BASE_URL}/${id}`);
+//         return res.json();
+//     } catch(err) {
+//         console.log(err)
+//     }
+// }
 
 
-export { index, create }
+export { index, create, showfetch }
 
