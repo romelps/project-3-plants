@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import * as PlantService from './Services/plantService'
 import Home from './components/Homepage/home'
 import Nav from './components/Navbar/navbar'
-// import Show from './components/Show/show'
+import Show from './components/Show/show'
 import Create from './components/Create/create'
 import Search from './components/SearchBar/search'
 
@@ -21,13 +21,19 @@ const App = () => {
   const [search, setSearch] = useState('')
   const [searchPlants, setSearchPlants] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
+  const [showCard, setShowCard] = useState([]);
   const [showIndex, setShowIndex] = useState(false);
+
   
  //handles the changes in the search bar
 const handleInputChange = (event) => {
   setSearch(event.target.value)
 }
 
+//delete handler for the delete button
+const handleDelete = async (id) => {
+  await PlantService.destroy(id);
+}
 
 
 const handleSearch = async () => {
@@ -38,7 +44,6 @@ const handleSearch = async () => {
   console.log(returnData)
   setSearchPlants(returnData);
 }
-
 
   useEffect(() => {
     const fetchPlants = async () => {
@@ -59,18 +64,19 @@ const handleSearch = async () => {
     await PlantService.create(plant)
   }
 
- 
-
   return (
     <>
       <Nav 
-        isCreateOpen={isCreateOpen}
+        // handleCreateView={handleCreateView}
+        isCreateOpen={isCreateOpen} 
         setIsCreateOpen={setIsCreateOpen} 
         showSearch={showSearch}
         setShowSearch={setShowSearch}
       />
       <h1>Welcome to your garden </h1>
-     
+
+      <p>Please use the navigation bar to log your plant (plant a seed!), see the plants we have in our virtual garden, or eutheanize a not so healthy one.</p>
+
     <main>
         <ul>
           {plantList.map((plant) => (
@@ -80,7 +86,7 @@ const handleSearch = async () => {
             {...{handleAddPlant}}/>
           ))}
         </ul>
-      </main>
+    </main>
 
       {showIndex ? (
         <Index 
@@ -98,14 +104,14 @@ const handleSearch = async () => {
         handleAddPlant={handleAddPlant}  />
       ): null}
       
-      {/* <Show 
+      <Show 
       id='show' 
       plant = {plant}
       name= {plant.name}
       size= {plant.size}
       health= {plant.health}
       family= {plant.family}
-      /> */}
+      />
       {showSearch ?
       <Search
         id='search'
@@ -122,5 +128,7 @@ const handleSearch = async () => {
     </>
   )
 }
+
+
 
 export default App;
