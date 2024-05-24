@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import PlantService from './Services/plantService'
+import * as PlantService from './Services/plantService'
 import Home from './components/Homepage/home'
 import Nav from './components/Navbar/navbar'
 // import Show from './components/Show/show'
@@ -7,6 +7,7 @@ import Create from './components/Create/create'
 import Search from './components/SearchBar/search'
 
 import SearchResult from './components/SearchResult/SearchResult'
+import Index from './components/Index/index'
 
 import './App.css'
 
@@ -20,6 +21,7 @@ const App = () => {
   const [search, setSearch] = useState('')
   const [searchPlants, setSearchPlants] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
+  const [showIndex, setShowIndex] = useState(false);
   
  //handles the changes in the search bar
 const handleInputChange = (event) => {
@@ -62,25 +64,39 @@ const handleSearch = async () => {
   return (
     <>
       <Nav 
-        handleCreateView={handleCreateView}
-        isCreateOpen={isCreateOpen} 
+        isCreateOpen={isCreateOpen}
+        setIsCreateOpen={setIsCreateOpen} 
         showSearch={showSearch}
         setShowSearch={setShowSearch}
       />
       <h1>Welcome to your garden </h1>
-      <main>
+     
+    <main>
         <ul>
           {plantList.map((plant) => (
-            <Home id='home' plant = {plant} {...{handleAddPlant}}/>
+            <Home 
+            id='home' 
+            plant = {plant} 
+            {...{handleAddPlant}}/>
           ))}
         </ul>
       </main>
 
-      {/* {isFormOpen ? (
-        <Create id='create' />
-      ): (
-        <Home id='home'/>
-      )} */}
+      {showIndex ? (
+        <Index 
+        id='index'
+        plant={plant} 
+        plantList={plantList}
+       
+        {...{handleAddPlant}}/>
+      ) : null}
+
+
+      {isCreateOpen ? (
+        <Create 
+        id='create'
+        handleAddPlant={handleAddPlant}  />
+      ): null}
       
       {/* <Show 
       id='show' 
