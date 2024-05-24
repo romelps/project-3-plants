@@ -18,4 +18,4 @@ const index = async() => {
 // }
 
 
-export default index 
+export default {index};
