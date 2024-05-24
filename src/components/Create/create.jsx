@@ -9,7 +9,12 @@ const Create = ({handleAddPlant}) => {
         family: '',
     })
 
+    const handleChange = (event) => {
+        setPlant({ ...plant, [event.target.name]: event.target.value});
+    }
+
     return(
+        
         <form onSubmit={ () => handleAddPlant(plant)}>
             <label htmlFor="name">Name: </label>
             <input
@@ -17,6 +22,7 @@ const Create = ({handleAddPlant}) => {
                 name="name"
                 id="name"
                 value={plant.name}
+                onChange={handleChange}
             />
 
             <label htmlFor="Size">Size: </label>
@@ -25,6 +31,7 @@ const Create = ({handleAddPlant}) => {
                 name="size"
                 id="size"
                 value={plant.size}
+                onChange={handleChange}
             />
 
             <label htmlFor="health">Health: </label>
@@ -33,6 +40,7 @@ const Create = ({handleAddPlant}) => {
                 name="health"
                 id="health"
                 value={plant.health}
+                onChange={handleChange}
             />
 
             <label htmlFor="family">Plant Family: </label>
@@ -41,10 +49,12 @@ const Create = ({handleAddPlant}) => {
                 name="family"
                 id="family"
                 value={plant.family}
+                onChange={handleChange}
             />
 
             <button type="submit">Plant Seed</button>
         </form>
+        
     )
 }
 
