@@ -7,6 +7,7 @@ import Create from './components/Create/create'
 import Search from './components/SearchBar/search'
 
 import SearchResult from './components/SearchResult/SearchResult'
+import Index from './components/Index/index'
 
 import './App.css'
 
@@ -21,6 +22,8 @@ const App = () => {
   const [searchPlants, setSearchPlants] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
   const [showCard, setShowCard] = useState([]);
+  const [showIndex, setShowIndex] = useState(false);
+
   
  //handles the changes in the search bar
 const handleInputChange = (event) => {
@@ -66,24 +69,40 @@ const handleSearch = async () => {
       <Nav 
         // handleCreateView={handleCreateView}
         isCreateOpen={isCreateOpen} 
+        setIsCreateOpen={setIsCreateOpen} 
         showSearch={showSearch}
         setShowSearch={setShowSearch}
       />
       <h1>Welcome to your garden </h1>
+
       <p>Please use the navigation bar to log your plant (plant a seed!), see the plants we have in our virtual garden, or eutheanize a not so healthy one.</p>
-      <main>
+
+    <main>
         <ul>
           {plantList.map((plant) => (
-            <Home id='home' plant = {plant} {...{handleAddPlant}}/>
+            <Home 
+            id='home' 
+            plant = {plant} 
+            {...{handleAddPlant}}/>
           ))}
         </ul>
-      </main>
+    </main>
 
-      {/* {isFormOpen ? (
-        <Create id='create' />
-      ): (
-        <Home id='home'/>
-      )} */}
+      {showIndex ? (
+        <Index 
+        id='index'
+        plant={plant} 
+        plantList={plantList}
+       
+        {...{handleAddPlant}}/>
+      ) : null}
+
+
+      {isCreateOpen ? (
+        <Create 
+        id='create'
+        handleAddPlant={handleAddPlant}  />
+      ): null}
       
       <Show 
       id='show' 
