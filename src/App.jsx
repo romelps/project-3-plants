@@ -5,8 +5,8 @@ import Nav from './components/Navbar/navbar'
 // import Show from './components/Show/show'
 import Create from './components/Create/create'
 import Search from './components/SearchBar/search'
-import SearchResult from './components/SearchResult/SearchResult'
 
+import SearchResult from './components/SearchResult/SearchResult'
 
 import './App.css'
 
@@ -16,10 +16,10 @@ const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/plants`;
 const App = () => {
   const [plant, setPlant] = useState({})
   const [plantList, setPlantList] = useState([]);
+  const [isCreateOpen, setIsCreateOpen] = useState(false);//tells us create form is not open
   const [search, setSearch] = useState('')
   const [searchPlants, setSearchPlants] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
-
   
  //handles the changes in the search bar
 const handleInputChange = (event) => {
@@ -43,6 +43,7 @@ const handleSearch = async () => {
       try {
         const plants = await PlantService.index();
         setPlantList(plants);
+        console.log(plantList)
         console.log(plants)
       } catch (err) {
         console.log(err)
@@ -51,28 +52,36 @@ const handleSearch = async () => {
     fetchPlants();
   }, []);
 
+  //adds plant to database (PlantService connects directly to back-end)
   const handleAddPlant = async (plant) => {
-    
     await PlantService.create(plant)
-    
   }
 
+ 
 
   return (
     <>
       <Nav 
-      showSearch={showSearch}
-      setShowSearch={setShowSearch}
+        handleCreateView={handleCreateView}
+        isCreateOpen={isCreateOpen} 
+        showSearch={showSearch}
+        setShowSearch={setShowSearch}
       />
-      
+      <h1>Welcome to your garden </h1>
       <main>
         <ul>
           {plantList.map((plant) => (
-            <Home id='home' plant = {plant}/>
+            <Home id='home' plant = {plant} {...{handleAddPlant}}/>
           ))}
         </ul>
       </main>
-      <Create id='create' />
+
+      {/* {isFormOpen ? (
+        <Create id='create' />
+      ): (
+        <Home id='home'/>
+      )} */}
+      
       {/* <Show 
       id='show' 
       plant = {plant}
