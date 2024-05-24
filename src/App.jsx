@@ -35,7 +35,6 @@ const handleSearch = async () => {
   const returnData = await res.json();
   console.log(returnData)
   setSearchPlants(returnData);
-}
 
 
   useEffect(() => {
