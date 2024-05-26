@@ -7,7 +7,6 @@ import Create from './components/Create/create'
 import Search from './components/SearchBar/search'
 
 import SearchResult from './components/SearchResult/SearchResult'
-import Index from './components/Index/index'
 
 import './App.css'
 
@@ -22,19 +21,17 @@ const App = () => {
   const [searchPlants, setSearchPlants] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
   const [showCard, setShowCard] = useState([]);
-  const [showIndex, setShowIndex] = useState(false);
-
+  const [showIndex, setShowIndex] = useState(true);
   
  //handles the changes in the search bar
 const handleInputChange = (event) => {
   setSearch(event.target.value)
 }
 
-//delete handler for the delete button
+//
 const handleDelete = async (id) => {
   await PlantService.destroy(id);
 }
-
 
 const handleSearch = async () => {
   const URL = `http://3.141.46.99:3015/plants/${search}`
@@ -69,41 +66,31 @@ const handleSearch = async () => {
       <Nav 
         // handleCreateView={handleCreateView}
         isCreateOpen={isCreateOpen} 
-        setIsCreateOpen={setIsCreateOpen} 
         showSearch={showSearch}
         setShowSearch={setShowSearch}
+        showIndex = {showIndex}
+        setShowIndex = {setShowIndex}
       />
       <h1>Welcome to your garden </h1>
-
       <p>Please use the navigation bar to log your plant (plant a seed!), see the plants we have in our virtual garden, or eutheanize a not so healthy one.</p>
-
-    <main>
+      
+      {showIndex ?<main>
         <ul>
           {plantList.map((plant) => (
-            <Home 
-            id='home' 
-            plant = {plant} 
-            {...{handleAddPlant}}/>
+            <Home id='home' plant = {plant} {...{handleAddPlant}}/>
+          
           ))}
         </ul>
-    </main>
+      </main>
+      : null}
 
-      {showIndex ? (
-        <Index 
-        id='index'
-        plant={plant} 
-        plantList={plantList}
-       
-        {...{handleAddPlant}}/>
-      ) : null}
+      {/* {isFormOpen ? (
+        <Create id='create' />
+      ): (
+        <Home id='home'/>
+      )} */}
 
-
-      {isCreateOpen ? (
-        <Create 
-        id='create'
-        handleAddPlant={handleAddPlant}  />
-      ): null}
-      
+      {/* {show ?
       <Show 
       id='show' 
       plant = {plant}
@@ -111,7 +98,8 @@ const handleSearch = async () => {
       size= {plant.size}
       health= {plant.health}
       family= {plant.family}
-      />
+      />: null} */}
+
       {showSearch ?
       <Search
         id='search'
