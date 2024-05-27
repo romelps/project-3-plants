@@ -23,7 +23,7 @@ const Create = ({handleAddPlant}) => {
                 id="name"
                 value={plant.name}
                 onChange={handleChange}
-            />
+            /><br />
 
             <br></br>
 

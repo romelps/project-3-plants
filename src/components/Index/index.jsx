@@ -7,12 +7,15 @@ const Index = (props) => {
          <main>
             <ul>
             {plantList.map((plant) => (
-                <li>
+                <li id={plant._id}>
                     {plant.name}
+                    {plant.id}
+                    {plant.health}
                 </li>
             ))}
             </ul>
-        </main>
+            </main>
+        
         {/* <li>
             <h3>{plant.name}</h3>
         </li> */}
