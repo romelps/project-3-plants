@@ -13,7 +13,7 @@ const index = async() => {
 
 
 
-const create = async (formData) => {
+const create = async (plant) => {
     try {
         const res = await fetch(BASE_URL, {
             method: 'POST', //specifies post request
@@ -25,7 +25,7 @@ const create = async (formData) => {
 
             //formData is converted JSON and is sent as the body
             //received on the backend as req.body
-            body: JSON.stringify(formData),
+            body: JSON.stringify(plant),
         });
         return renderToStaticMarkup.json();
     } catch(err){
@@ -43,5 +43,5 @@ const create = async (formData) => {
 // }
 
 
-export { index, create, showfetch }
+export { index, create }
 

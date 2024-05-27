@@ -61,8 +61,18 @@ const handleSearch = async () => {
 
   //adds plant to database (PlantService connects directly to back-end)
   const handleAddPlant = async (plant) => {
-    await PlantService.create(plant)
-  }
+    try{
+      const newPlant = await PlantService.create(plant);
+
+      //add the current plant list and put it into an array
+      setPlantList([newPlant, ...plantList]);
+
+      //close create form
+      setIsCreateOpen(false);
+    } catch (error) {
+      console.log(error)
+    }
+  };
 
   return (
     <>
@@ -84,6 +94,7 @@ const handleSearch = async () => {
             id='home' 
             plant = {plant} 
             {...{handleAddPlant}}/>
+
           ))}
         </ul>
     </main>
@@ -95,12 +106,14 @@ const handleSearch = async () => {
         plantList={plantList}
        
         {...{handleAddPlant}}/>
+        
       ) : null}
 
 
       {isCreateOpen ? (
         <Create 
         id='create'
+        plant={plant}
         handleAddPlant={handleAddPlant}  />
       ): null}
       
@@ -112,6 +125,7 @@ const handleSearch = async () => {
       health= {plant.health}
       family= {plant.family}
       />
+
       {showSearch ?
       <Search
         id='search'
