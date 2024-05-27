@@ -5,6 +5,7 @@ import Nav from './components/Navbar/navbar'
 import Show from './components/Show/show'
 import Create from './components/Create/create'
 import Search from './components/SearchBar/search'
+import Update from './components/Update/update'
 
 import SearchResult from './components/SearchResult/SearchResult'
 import Index from './components/Index/index'
@@ -23,7 +24,7 @@ const App = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [showCard, setShowCard] = useState([]);
   const [showIndex, setShowIndex] = useState(false);
-
+  const [showUpdate, setShowUpdate] = useState(false);
   
  //handles the changes in the search bar
 const handleInputChange = (event) => {
@@ -74,6 +75,12 @@ const handleSearch = async () => {
     }
   };
 
+  //update plant
+  const handleUpdateView = () => {
+    if(!plant.name) setShowCard(null);
+    setShowUpdate(!showUpdate);
+  }
+
   return (
     <>
       <Nav 
@@ -115,6 +122,14 @@ const handleSearch = async () => {
         id='create'
         plant={plant}
         handleAddPlant={handleAddPlant}  />
+      ): null}
+
+      {showUpdate ? (
+        <Update
+        id='update'
+        plant={plant}
+        handleUpdate={handleUpdate}
+        />
       ): null}
       
       <Show 

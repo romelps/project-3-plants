@@ -25,6 +25,8 @@ const Create = ({handleAddPlant}) => {
                 onChange={handleChange}
             />
 
+            <br></br>
+
             <label htmlFor="Size">Size: </label>
             <input
                 type="text"
@@ -33,6 +35,9 @@ const Create = ({handleAddPlant}) => {
                 value={plant.size}
                 onChange={handleChange}
             />
+
+            <br></br>
+
             <label htmlFor="health">Health: </label>
             <input
                 type="text"
@@ -42,6 +47,8 @@ const Create = ({handleAddPlant}) => {
                 onChange={handleChange}
             />
 
+            <br></br>
+
             <label htmlFor="family">Plant Family: </label>
             <input
                 type="text"
@@ -50,6 +57,8 @@ const Create = ({handleAddPlant}) => {
                 value={plant.family}
                 onChange={handleChange}
             />
+
+        <br></br>
 
             <button type="submit">Plant Seed</button>
         </form>
