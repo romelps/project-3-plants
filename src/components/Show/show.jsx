@@ -2,6 +2,9 @@ import {useState} from 'react';
 
 
 const Show = ({plant}) => {
+
+    
+
     return(
        <>
        <ul>

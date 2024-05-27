@@ -11,9 +11,12 @@ const Home = (props) => {
         }
         
 
+
+
     return(
         <>
         
+
         <li id={plant._id}>
             
             <h3>{plant.name}<br/><button onClick={()=> {handleDetails(plant._id)}}>View Details</button></h3>
@@ -27,9 +30,11 @@ const Home = (props) => {
             family= {plant.family}
             />: null}
 
+            <button onClick={() => props.handleUpdateView(props.selected)}>Repot</button>
             {/* <p>Health: {plant.health}</p>
             <p>Size: {plant.size}</p>
             <p>Family: {plant.family}</p> */}
+
         </li>
         {/* <ul>
             {plantList.map((plant, i) =>(

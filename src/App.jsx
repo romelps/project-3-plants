@@ -5,6 +5,7 @@ import Nav from './components/Navbar/navbar'
 import Show from './components/Show/show'
 import Create from './components/Create/create'
 import Search from './components/SearchBar/search'
+import Update from './components/Update/update'
 
 import SearchResult from './components/SearchResult/SearchResult'
 
@@ -21,7 +22,11 @@ const App = () => {
   const [searchPlants, setSearchPlants] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
   const [showCard, setShowCard] = useState([]);
-  const [showIndex, setShowIndex] = useState(true);
+  const [showIndex, setShowIndex] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
+
+
+
   
  //handles the changes in the search bar
 const handleInputChange = (event) => {
@@ -58,7 +63,23 @@ const handleSearch = async () => {
 
   //adds plant to database (PlantService connects directly to back-end)
   const handleAddPlant = async (plant) => {
-    await PlantService.create(plant)
+    try{
+      const newPlant = await PlantService.create(plant);
+
+      //add the current plant list and put it into an array
+      setPlantList([newPlant, ...plantList]);
+
+      //close create form
+      setIsCreateOpen(false);
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+  //update plant
+  const handleUpdateView = () => {
+    if(!plant.name) setShowCard(null);
+    setShowUpdate(!showUpdate);
   }
 
   return (
@@ -74,31 +95,60 @@ const handleSearch = async () => {
       <h1>Welcome to your garden </h1>
       <p>Please use the navigation bar to log your plant (plant a seed!), see the plants we have in our virtual garden, or eutheanize a not so healthy one.</p>
       
-      {showIndex ?<main>
-        <ul>
-          {plantList.map((plant) => (
-            <Home id='home' plant = {plant} {...{handleAddPlant}}/>
-          
-          ))}
-        </ul>
-      </main>
-      : null}
+      {showIndex ?
+        <main>
+          <ul>
+            {plantList.map((plant) => (
+              <Home 
+              id='home' 
+              plant = {plant} 
+              {...{handleAddPlant}}/>
 
-      {/* {isFormOpen ? (
-        <Create id='create' />
-      ): (
-        <Home id='home'/>
-      )} */}
+            ))}
+          </ul>
+      </main> 
+        : null}
 
-      {/* {show ?
-      <Show 
-      id='show' 
-      plant = {plant}
-      name= {plant.name}
-      size= {plant.size}
-      health= {plant.health}
-      family= {plant.family}
-      />: null} */}
+//       {showIndex ? (
+//         <Index 
+//         id='index'
+//         plant={plant} 
+//         plantList={plantList}
+       
+//         {...{handleAddPlant}}/>
+        
+//       ) : null}
+
+
+      {isCreateOpen ? (
+        <Create 
+        id='create'
+        plant={plant}
+        handleAddPlant={handleAddPlant}  />
+      ): null}
+
+      {showUpdate ? (
+        <Update
+        id='update'
+        plant={plant}
+        handleUpdate={handleUpdate}
+        />
+      ): null}
+      
+
+
+   
+      
+//       <Show 
+//       id='show' 
+//       plant = {plant}
+//       name= {plant.name}
+//       size= {plant.size}
+//       health= {plant.health}
+//       family= {plant.family}
+   
+//       />: null} 
+
 
       {showSearch ?
       <Search

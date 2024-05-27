@@ -11,6 +11,8 @@ const Nav = ({showSearch, setShowSearch, isCreateOpen, setIsCreateOpen, showInde
     const handleCreateView = () => {
         setIsCreateOpen(!isCreateOpen);
     }
+
+    
     
     //toggles the create view to be visible
     const handleIndexView = () => {
