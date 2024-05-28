@@ -13,7 +13,7 @@ const Home = (props) => {
 
     const deletePlant = async (id) => {
     try {
-        const deletedPlant = await fetch(`http://3.141.46.99:3015/plants//${id}`, {
+        const deletedPlant = await fetch(`http://3.141.46.99:3015/plants/${id}`, {
             method: 'DELETE',
         });
         

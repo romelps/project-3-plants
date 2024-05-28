@@ -25,7 +25,7 @@ const App = () => {
   const [showIndex, setShowIndex] = useState(false);
   const [showUpdate, setShowUpdate] = useState(false);
   const [selected, setSelected] = useState(null);
-
+  const [show, setShow] = useState(null);
 
 
 
@@ -127,6 +127,12 @@ const handleSearch = async () => {
               id='home' 
               plant = {plant} 
               handleDelete={handleDelete}
+              show={show}
+              setShow={setShow}
+              handleUpdateView={handleUpdateView}
+              setShowUpdate={setShowUpdate}
+              showUpdate={showUpdate}
+              
               {...{handleAddPlant}}/>
 
             ))}
