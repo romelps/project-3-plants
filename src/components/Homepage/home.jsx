@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Show from '../Show/show'
-const Home = (props, {handleAddPlant, showUpdate, setShowUpdate, handleUpdateView}) => {
+// import handleDelete from '../../Services/plantService.js'
+const Home = (props) => {
 
-    const { plant, handleDelete, } = props
-    const [show, setShow] = useState(false)
+    const {plant, handleDelete, handleAddPlant, showUpdate, setShowUpdate, handleUpdateView, show, setShow} = props
 
     const handleDetails = (id) => {
         setShow(!show)
@@ -11,7 +11,17 @@ const Home = (props, {handleAddPlant, showUpdate, setShowUpdate, handleUpdateVie
         }
         
 
-
+    const deletePlant = async (id) => {
+    try {
+        const deletedPlant = await fetch(`http://3.141.46.99:3015/plants//${id}`, {
+            method: 'DELETE',
+        });
+        
+        return deletedPlant;
+    } catch(err) {
+        console.log(err)
+    }
+}
 
     return(
         <>
@@ -29,8 +39,8 @@ const Home = (props, {handleAddPlant, showUpdate, setShowUpdate, handleUpdateVie
             family= {plant.family}
             />: null}
 
-            <button onClick={() => props.handleDelete(props.plant._id)}>Euthanize</button>
-            <button onClick={() => {handleUpdateView(props.plant._id)}}>Repot</button>
+            <button onClick={() => {handleDelete(plant._id)}}>Euthanize</button>
+            <button onClick={() => {handleUpdateView(plant._id)}}>Repot</button>
 
             {/* <p>Health: {plant.health}</p>
             <p>Size: {plant.size}</p>
