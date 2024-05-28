@@ -23,7 +23,7 @@ const Home = ( props ) => {
     return(
         <>
     
-        <li id={plant._id}>
+        <li key={plant._id}>
             
             <h3>{plant.name}<br/><button onClick={()=> {handleDetails(plant._id)}}>View Details</button></h3>
             {show ?

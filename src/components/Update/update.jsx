@@ -18,7 +18,7 @@ const Update = (props) => {
     const handleUpdateForm = (event) => {
         event.preventDefault();
         if (show) {
-            handleUpdate(plant, show._id);
+            handleUpdate(plant, show.plant._id);
         } else {
             handleAddPlant(plant);
         }
