@@ -33,6 +33,22 @@ const create = async (plant) => {
         console.log('Caught error')
     }
 }
+
+const update = async (plant, plantId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${plantId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(plant),
+        });
+        return res.json();
+    } catch (err) {
+        console.log(err);
+    }
+};
+
 //for button onClick in index showcards to show the single card upon clicking
 // const showfetch = async (id) => {
 //     try {

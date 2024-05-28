@@ -77,8 +77,14 @@ const handleSearch = async () => {
   };
 
   //update plant
+  
+
+  // const updateShow = (plant) => {
+  //   setShow(plant)
+  // }
+    
   const handleUpdateView = () => {
-    if(!plant.name) setShowCard(null);
+    if(!plant.name) setShow(null);
     setShowUpdate(!showUpdate);
   }
 
@@ -86,7 +92,8 @@ const handleSearch = async () => {
     <>
       <Nav 
         // handleCreateView={handleCreateView}
-        isCreateOpen={isCreateOpen} 
+        isCreateOpen={isCreateOpen}
+        setIsCreateOpen={setIsCreateOpen} 
         showSearch={showSearch}
         setShowSearch={setShowSearch}
         showIndex = {showIndex}
@@ -102,36 +109,44 @@ const handleSearch = async () => {
               <Home 
               id='home' 
               plant = {plant} 
-              {...{handleAddPlant}}/>
+              {...{handleAddPlant}}
+              showUpdate={showUpdate}
+              setShowUpdate={setShowUpdate}
+              // handleUpdateView={handleUpdateView}
+              />
 
             ))}
           </ul>
       </main> 
         : null}
 
-//       {showIndex ? (
-//         <Index 
+{/* //       {showIndex ? ( */}
+{/* //         <Index 
 //         id='index'
 //         plant={plant} 
 //         plantList={plantList}
        
 //         {...{handleAddPlant}}/>
         
-//       ) : null}
+//       ) : null} */}
 
 
       {isCreateOpen ? (
         <Create 
         id='create'
         plant={plant}
-        handleAddPlant={handleAddPlant}  />
+        handleAddPlant={handleAddPlant} 
+        />
       ): null}
 
       {showUpdate ? (
         <Update
         id='update'
         plant={plant}
-        handleUpdate={handleUpdate}
+        handleUpdateView={handleUpdateView}
+        handleAddPlant={handleAddPlant}
+        show={show}
+        setShow={setShow}
         />
       ): null}
       
@@ -139,7 +154,7 @@ const handleSearch = async () => {
 
    
       
-//       <Show 
+{/* //       <Show 
 //       id='show' 
 //       plant = {plant}
 //       name= {plant.name}
@@ -147,7 +162,7 @@ const handleSearch = async () => {
 //       health= {plant.health}
 //       family= {plant.family}
    
-//       />: null} 
+//       />: null}  */}
 
 
       {showSearch ?

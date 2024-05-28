@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-const Update = ({handleUpdateView}) => {
+const Update = (props, {handleUpdateView, handleAddPlant}) => {
 
     const [plant, setPlant] = useState({
         name: '',
@@ -9,8 +9,10 @@ const Update = ({handleUpdateView}) => {
         family: '',
     })
 
-    const handleChange = (event) => {
-        setPlant({ ...plant, [event.target.name]: event.target.value});
+    const handleUpdateForm = (event) => {
+        event.preventDefault();
+        props.handleAddPlant(plant);
+        // setPlant({ ...plant, [event.target.name]: event.target.value});
     }
 
     return(

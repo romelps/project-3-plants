@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Show from '../Show/show'
-const Home = (props) => {
+const Home = (props, {handleAddPlant, showUpdate, setShowUpdate, handleUpdateView}) => {
 
     const { plant } = props
     const [show, setShow] = useState(false)
@@ -15,8 +15,7 @@ const Home = (props) => {
 
     return(
         <>
-        
-
+    
         <li id={plant._id}>
             
             <h3>{plant.name}<br/><button onClick={()=> {handleDetails(plant._id)}}>View Details</button></h3>
@@ -30,7 +29,7 @@ const Home = (props) => {
             family= {plant.family}
             />: null}
 
-            <button onClick={() => props.handleUpdateView(props.selected)}>Repot</button>
+            <button onClick={() => {handleUpdateView(plant._id)}}>Repot</button>
             {/* <p>Health: {plant.health}</p>
             <p>Size: {plant.size}</p>
             <p>Family: {plant.family}</p> */}
