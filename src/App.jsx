@@ -23,15 +23,11 @@ const App = () => {
   const [showSearch, setShowSearch] = useState(false);
   // const [showCard, setShowCard] = useState([]);
   const [showIndex, setShowIndex] = useState(false);
-  const [showUpdate, setShowUpdate] = useState(false);
-
+  // const [showUpdate, setShowUpdate] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false)
   const [show, setShow] = useState(false)
 
   const [selected, setSelected] = useState(null);
-
-
-
-
 
 
   
@@ -101,15 +97,13 @@ const handleSearch = async () => {
     }
   };
   
-  const handleUpdateView = () => {
-    if(!plant.name) setShow(null);
-    setShowUpdate(!showUpdate);
-  }
+
 
   //update plant
-  const handleUpdate = async (plant) => {
+  const handleUpdate = async (plant, id) => {
+    console.log(id)
     try {
-      const updatedPlant = await PlantService.update(plant);
+      const updatedPlant = await PlantService.update(plant, id);
 
       //potential errors
       if(updatedPlant.error) {
@@ -161,15 +155,18 @@ const handleSearch = async () => {
               plant = {plant} 
 
               {...{handleAddPlant}}
-              showUpdate={showUpdate}
-              setShowUpdate={setShowUpdate}
-              handleUpdateView={handleUpdateView}
+              // showUpdate={showUpdate}
+              // setShowUpdate={setShowUpdate}
+              // handleUpdateView={handleUpdateView}
               show={show}
               setShow={setShow}
               // updateShow={updateShow}
               plantList={plantList}
               handleDelete={handleDelete}
+              handleUpdate={handleUpdate}
               />
+
+        
             ))}
           </ul>
       </main> 
@@ -194,30 +191,31 @@ const handleSearch = async () => {
         />
       ): null}
 
-      {showUpdate ? (
+    {/* {showUpdate ? (
         <Update
         id='update'
         plant={plant}
-        handleUpdateView={handleUpdateView}
+        setPlant={setPlant}
+        // handleUpdateView={handleUpdateView}
         handleAddPlant={handleAddPlant}
         handleUpdate={handleUpdate}
         show={show}
         setShow={setShow}
         />
-      ): null}
+      ): null} */}
       
-
+      {/* {show ?
+            <Show 
+            id='show' 
+            plant = {plant}
+            name= {plant.name}
+            size= {plant.size}
+            health= {plant.health}
+            family= {plant.family}
+            />: null} */}
 
    
       
-{/*       <Show 
-       id='show' 
-       plant = {plant}
-       name= {plant.name}
-       size= {plant.size}
-       health= {plant.health}
-       family= {plant.family}
-          />: null}  */}
 
 
       {showSearch ?

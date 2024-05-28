@@ -7,9 +7,9 @@ import Update from '../Update/update';
 
 const Home = ( props ) => {
 
-    const { handleAddPlant, showUpdate, setShowUpdate, handleUpdateView, show, setShow, plant, setPlant, plantList } = props
+    const { handleAddPlant,  show, setShow, plant, setPlant, plantList, handleDelete, handleUpdate } = props
     // const [show, setShow] = useState(false)
-
+    const [showUpdate, setShowUpdate] = useState(false);
 
 
     const handleDetails = (id) => {
@@ -23,7 +23,12 @@ const Home = ( props ) => {
     //     </a>
     // ))
 
-    const deletePlant = async (id) => {
+    const handleUpdateView = () => {
+        // if(!plant.name) setShow(null);
+        setShowUpdate(!showUpdate);
+      }
+
+const deletePlant = async (id) => {
     try {
         const deletedPlant = await fetch(`http://3.141.46.99:3015/plants//${id}`, {
             method: 'DELETE',
@@ -54,11 +59,26 @@ const Home = ( props ) => {
             <button onClick={() => {handleDelete(plant._id)}}>Euthanize</button>
             <button onClick={() => {handleUpdateView(plant._id)}}>Repot</button>
 
+            {showUpdate ? (
+                <Update
+                id='update'
+                plant={plant}
+                setPlant={setPlant}
+                // handleUpdateView={handleUpdateView}
+                // handleAddPlant={handleAddPlant}
+                handleUpdate={handleUpdate}
+                // show={show}
+                // setShow={setShow}
+                />
+            ): null}
+            
             {/* <p>Health: {plant.health}</p>
             <p>Size: {plant.size}</p>
             <p>Family: {plant.family}</p> */}
 
         </li>
+       
+            
         {/* <ul>
             {plantList.map((plant, i) =>(
                 <li key={i}>
