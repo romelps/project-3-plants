@@ -42,7 +42,7 @@ const handleDelete = async (id) => {
     const deletedPlant = await PlantService.deletePlant(id);
   
   if (deletedPlant.error) {
-    throw new Error(deletePlant.error);
+    throw new Error(deletedPlant.error);
   }
 
   setPlantList(plantList.filter((plant) => plant._id !== deletedPlant._id));
@@ -126,6 +126,7 @@ const handleSearch = async () => {
               <Home 
               id='home' 
               plant = {plant} 
+              handleDelete={handleDelete}
               {...{handleAddPlant}}/>
 
             ))}
