@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Show from '../Show/show'
+import './home.css'
 // import handleDelete from '../../Services/plantService.js'
 const Home = (props) => {
 
@@ -11,17 +12,17 @@ const Home = (props) => {
         }
         
 
-    const deletePlant = async (id) => {
-    try {
-        const deletedPlant = await fetch(`http://3.141.46.99:3015/plants/${id}`, {
-            method: 'DELETE',
-        });
+//     const deletePlant = async (id) => {
+//     try {
+//         const deletedPlant = await fetch(`http://3.141.46.99:3015/plants/${id}`, {
+//             method: 'DELETE',
+//         });
         
-        return deletedPlant;
-    } catch(err) {
-        console.log(err)
-    }
-}
+//         return deletedPlant.json();
+//     } catch(err) {
+//         console.log(err)
+//     }
+// }
 
     return(
         <>

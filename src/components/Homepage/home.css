@@ -1,0 +1,16 @@
+li {
+    list-style-type: none;
+    text-decoration: none;
+    background-color: darkslategrey;
+    border-radius: 12px;
+    padding: 10px;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
