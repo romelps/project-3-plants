@@ -21,9 +21,10 @@ const App = () => {
   const [search, setSearch] = useState('')
   const [searchPlants, setSearchPlants] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
-  const [showCard, setShowCard] = useState([]);
+  // const [showCard, setShowCard] = useState([]);
   const [showIndex, setShowIndex] = useState(false);
   const [showUpdate, setShowUpdate] = useState(false);
+  const [show, setShow] = useState(false)
 
 
 
@@ -77,7 +78,29 @@ const handleSearch = async () => {
   };
 
   //update plant
-  
+  const handleUpdate = async (plant, id) => {
+    try {
+      const updatedPlant = await PlantService.update(plant, id);
+
+      //potential errors
+      if(updatedPlant.error) {
+        throw new Error(updatedPlant.error);
+      }
+
+      const updatedPlantList = plantList.map((plant) =>
+    
+      //if the id of the current is not the same as the updated id, return exitsting plant
+      plant._id !== updatedPlant._id ? plant : updatedPlant
+    );
+
+    //update plant list
+    setPlantList(updatedPlantList);
+    setShow(updatedPlant);
+    setShowUpdate(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // const updateShow = (plant) => {
   //   setShow(plant)
@@ -112,7 +135,9 @@ const handleSearch = async () => {
               {...{handleAddPlant}}
               showUpdate={showUpdate}
               setShowUpdate={setShowUpdate}
-              // handleUpdateView={handleUpdateView}
+              handleUpdateView={handleUpdateView}
+              show={show}
+              setShow={setShow}
               />
 
             ))}

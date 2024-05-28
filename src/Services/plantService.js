@@ -34,9 +34,9 @@ const create = async (plant) => {
     }
 }
 
-const update = async (plant, plantId) => {
+const update = async (plant, id) => {
     try {
-        const res = await fetch(`${BASE_URL}/${plantId}`, {
+        const res = await fetch(`${BASE_URL}/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json',
@@ -60,5 +60,5 @@ const update = async (plant, plantId) => {
 // }
 
 
-export { index, create }
+export { index, create, update }
 

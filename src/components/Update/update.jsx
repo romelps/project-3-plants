@@ -1,18 +1,30 @@
 import { useState } from 'react'
 
-const Update = (props, {handleUpdateView, handleAddPlant}) => {
+const Update = (props) => {
 
-    const [plant, setPlant] = useState({
+    const {handleUpdateView, handleAddPlant, show, setShow} = props
+
+    const initialState = {
         name: '',
         size: '',
         health: '',
         family: '',
-    })
+    }
+
+    const [plant, setPlant] = useState(props.show ? props.show : initialState)
 
     const handleUpdateForm = (event) => {
         event.preventDefault();
-        props.handleAddPlant(plant);
+        if (props.show) {
+            props.handleAddPlant(plant, props.show._id);
+        } else {
+            props.handleAddPlant(plant);
+        }
         // setPlant({ ...plant, [event.target.name]: event.target.value});
+    };
+
+    const handleChange = (event) => {
+        setPlant({ ...plant, [event.target.name]: event.target.value});
     }
 
     return(
@@ -23,7 +35,7 @@ const Update = (props, {handleUpdateView, handleAddPlant}) => {
                 name="name"
                 id="name"
                 value={plant.name}
-                onChange={handleChange}
+                onChange={handleUpdateForm}
             />
 
             <br></br>

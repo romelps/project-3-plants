@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Show from '../Show/show'
-const Home = (props, {handleAddPlant, showUpdate, setShowUpdate, handleUpdateView}) => {
+const Home = ( props ) => {
 
-    const { plant } = props
-    const [show, setShow] = useState(false)
+    const { handleAddPlant, showUpdate, setShowUpdate, handleUpdateView, show, setShow, plant, setPlant } = props
+    // const [show, setShow] = useState(false)
 
     const handleDetails = (id) => {
         setShow(!show)
