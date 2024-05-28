@@ -34,9 +34,9 @@ const create = async (plant) => {
     }
 }
 
-const update = async (plant, id) => {
+const update = async (plant) => {
     try {
-        const res = await fetch(`${BASE_URL}/${id}`, {
+        const res = await fetch(`${BASE_URL}/${plant._id}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json',

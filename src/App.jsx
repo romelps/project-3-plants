@@ -26,8 +26,6 @@ const App = () => {
   const [showUpdate, setShowUpdate] = useState(false);
   const [show, setShow] = useState(false)
 
-
-
   
  //handles the changes in the search bar
 const handleInputChange = (event) => {
@@ -61,6 +59,10 @@ const handleSearch = async () => {
     };
     fetchPlants();
   }, []);
+  
+  // const updateShow = (plant) => {
+  //   setShow(plant)
+  // }
 
   //adds plant to database (PlantService connects directly to back-end)
   const handleAddPlant = async (plant) => {
@@ -76,11 +78,16 @@ const handleSearch = async () => {
       console.log(error)
     }
   };
+  
+  const handleUpdateView = () => {
+    if(!plant.name) setShow(null);
+    setShowUpdate(!showUpdate);
+  }
 
   //update plant
-  const handleUpdate = async (plant, id) => {
+  const handleUpdate = async (plant) => {
     try {
-      const updatedPlant = await PlantService.update(plant, id);
+      const updatedPlant = await PlantService.update(plant);
 
       //potential errors
       if(updatedPlant.error) {
@@ -89,14 +96,15 @@ const handleSearch = async () => {
 
       const updatedPlantList = plantList.map((plant) =>
     
-      //if the id of the current is not the same as the updated id, return exitsting plant
-      plant._id !== updatedPlant._id ? plant : updatedPlant
-    );
+        //if the id of the current is not the same as the updated id, return existing plant
+        plant._id !== updatedPlant._id ? plant : updatedPlant
+      );
 
-    //update plant list
-    setPlantList(updatedPlantList);
-    setShow(updatedPlant);
-    setShowUpdate(false);
+      //update plant list
+      setPlantList(updatedPlantList);
+      setShow(updatedPlant);
+      setShowUpdate(false);
+
     } catch (error) {
       console.log(error);
     }
@@ -106,10 +114,7 @@ const handleSearch = async () => {
   //   setShow(plant)
   // }
     
-  const handleUpdateView = () => {
-    if(!plant.name) setShow(null);
-    setShowUpdate(!showUpdate);
-  }
+ 
 
   return (
     <>
@@ -138,6 +143,8 @@ const handleSearch = async () => {
               handleUpdateView={handleUpdateView}
               show={show}
               setShow={setShow}
+              // updateShow={updateShow}
+              plantList={plantList}
               />
 
             ))}
@@ -170,6 +177,7 @@ const handleSearch = async () => {
         plant={plant}
         handleUpdateView={handleUpdateView}
         handleAddPlant={handleAddPlant}
+        handleUpdate={handleUpdate}
         show={show}
         setShow={setShow}
         />

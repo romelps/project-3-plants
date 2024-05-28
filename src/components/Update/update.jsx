@@ -1,26 +1,28 @@
 import { useState } from 'react'
+// import { update } from './Services/plantService.js'
+// src/Services/plantService.js
 
 const Update = (props) => {
 
-    const {handleUpdateView, handleAddPlant, show, setShow} = props
+    const {handleUpdateView, handleAddPlant, handleUpdate, show, setShow} = props
 
-    const initialState = {
+    const [plant, setPlant] = useState({
         name: '',
         size: '',
         health: '',
         family: '',
-    }
+    })
 
-    const [plant, setPlant] = useState(props.show ? props.show : initialState)
+    // const [plant, setPlant] = useState(show ? show : initialState)
 
     const handleUpdateForm = (event) => {
         event.preventDefault();
-        if (props.show) {
-            props.handleAddPlant(plant, props.show._id);
+        if (show) {
+            handleUpdate(plant, show._id);
         } else {
-            props.handleAddPlant(plant);
+            handleAddPlant(plant);
         }
-        // setPlant({ ...plant, [event.target.name]: event.target.value});
+       // setPlant({ ...plant, [event.target.name]: event.target.value});
     };
 
     const handleChange = (event) => {
@@ -28,14 +30,14 @@ const Update = (props) => {
     }
 
     return(
-        <form onSubmit={ () => handleUpdateView(plant)}>
+        <form onSubmit={ () => handleUpdate(plant._id)}>
             <label htmlFor="name">Name: </label>
             <input
                 type="text"
                 name="name"
                 id="name"
                 value={plant.name}
-                onChange={handleUpdateForm}
+                onChange={handleChange}
             />
 
             <br></br>
@@ -73,7 +75,7 @@ const Update = (props) => {
 
         <br></br>
 
-            <button type="submit">Repot plant</button>
+            <button type="submit" onClick={handleUpdateForm}>Repot plant</button>
         </form>
     )
 }
