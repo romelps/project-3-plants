@@ -4,9 +4,9 @@ import { useState } from 'react'
 
 const Update = (props) => {
 
-    const {handleUpdateView, handleAddPlant, handleUpdate, show, setShow} = props
+    const {handleUpdateView, handleAddPlant, handleUpdate, show, setShow, plant, setPlant} = props
 
-    const [plant, setPlant] = useState({
+    const [updatedPlant, setUpdatedPlant] = useState({
         name: '',
         size: '',
         health: '',
@@ -17,16 +17,14 @@ const Update = (props) => {
 
     const handleUpdateForm = (event) => {
         event.preventDefault();
-        if (show) {
-            handleUpdate(plant, show.plant._id);
-        } else {
-            handleAddPlant(plant);
-        }
+        console.log(updatedPlant)
+        handleUpdate(updatedPlant, plant._id);
+       
        // setPlant({ ...plant, [event.target.name]: event.target.value});
     };
 
     const handleChange = (event) => {
-        setPlant({ ...plant, [event.target.name]: event.target.value});
+       setUpdatedPlant({ ...updatedPlant, [event.target.name]: event.target.value});
     }
 
     return(
@@ -36,7 +34,8 @@ const Update = (props) => {
                 type="text"
                 name="name"
                 id="name"
-                value={plant.name}
+                // value={plant.name}
+                defaultValue={plant.name}
                 onChange={handleChange}
             />
 
@@ -47,7 +46,7 @@ const Update = (props) => {
                 type="text"
                 name="size"
                 id="size"
-                value={plant.size}
+                defaultValue={plant.size}
                 onChange={handleChange}
             />
 
@@ -58,7 +57,7 @@ const Update = (props) => {
                 type="text"
                 name="health"
                 id="health"
-                value={plant.health}
+                defaultValue={plant.health}
                 onChange={handleChange}
             />
 
@@ -69,7 +68,7 @@ const Update = (props) => {
                 type="text"
                 name="family"
                 id="family"
-                value={plant.family}
+                defaultValue={plant.family}
                 onChange={handleChange}
             />
 
