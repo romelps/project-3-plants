@@ -21,10 +21,14 @@ const App = () => {
   const [search, setSearch] = useState('')
   const [searchPlants, setSearchPlants] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
-  const [showCard, setShowCard] = useState([]);
+  // const [showCard, setShowCard] = useState([]);
   const [showIndex, setShowIndex] = useState(false);
   const [showUpdate, setShowUpdate] = useState(false);
+
+  const [show, setShow] = useState(false)
+
   const [selected, setSelected] = useState(null);
+
 
 
 
@@ -77,6 +81,10 @@ const handleSearch = async () => {
     };
     fetchPlants();
   }, []);
+  
+  // const updateShow = (plant) => {
+  //   setShow(plant)
+  // }
 
   //adds plant to database (PlantService connects directly to back-end)
   const handleAddPlant = async (plant) => {
@@ -92,18 +100,43 @@ const handleSearch = async () => {
       console.log(error)
     }
   };
+  
+  const handleUpdateView = () => {
+    if(!plant.name) setShow(null);
+    setShowUpdate(!showUpdate);
+  }
 
   //update plant
-  
+  const handleUpdate = async (plant) => {
+    try {
+      const updatedPlant = await PlantService.update(plant);
+
+      //potential errors
+      if(updatedPlant.error) {
+        throw new Error(updatedPlant.error);
+      }
+
+      const updatedPlantList = plantList.map((plant) =>
+    
+        //if the id of the current is not the same as the updated id, return existing plant
+        plant._id !== updatedPlant._id ? plant : updatedPlant
+      );
+
+      //update plant list
+      setPlantList(updatedPlantList);
+      setShow(updatedPlant);
+      setShowUpdate(false);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // const updateShow = (plant) => {
   //   setShow(plant)
   // }
     
-  const handleUpdateView = () => {
-    if(!plant.name) setShow(null);
-    setShowUpdate(!showUpdate);
-  }
+ 
 
   return (
     <>
@@ -126,9 +159,17 @@ const handleSearch = async () => {
               <Home 
               id='home' 
               plant = {plant} 
-              handleDelete={handleDelete}
-              {...{handleAddPlant}}/>
 
+              {...{handleAddPlant}}
+              showUpdate={showUpdate}
+              setShowUpdate={setShowUpdate}
+              handleUpdateView={handleUpdateView}
+              show={show}
+              setShow={setShow}
+              // updateShow={updateShow}
+              plantList={plantList}
+              handleDelete={handleDelete}
+              />
             ))}
           </ul>
       </main> 
@@ -159,6 +200,7 @@ const handleSearch = async () => {
         plant={plant}
         handleUpdateView={handleUpdateView}
         handleAddPlant={handleAddPlant}
+        handleUpdate={handleUpdate}
         show={show}
         setShow={setShow}
         />

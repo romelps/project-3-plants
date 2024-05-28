@@ -1,6 +1,10 @@
 import { useState } from 'react'
+// import { update } from './Services/plantService.js'
+// src/Services/plantService.js
 
-const Update = (props, {handleUpdateView, handleAddPlant}) => {
+const Update = (props) => {
+
+    const {handleUpdateView, handleAddPlant, handleUpdate, show, setShow} = props
 
     const [plant, setPlant] = useState({
         name: '',
@@ -9,14 +13,24 @@ const Update = (props, {handleUpdateView, handleAddPlant}) => {
         family: '',
     })
 
+    // const [plant, setPlant] = useState(show ? show : initialState)
+
     const handleUpdateForm = (event) => {
         event.preventDefault();
-        props.handleAddPlant(plant);
-        // setPlant({ ...plant, [event.target.name]: event.target.value});
+        if (show) {
+            handleUpdate(plant, show.plant._id);
+        } else {
+            handleAddPlant(plant);
+        }
+       // setPlant({ ...plant, [event.target.name]: event.target.value});
+    };
+
+    const handleChange = (event) => {
+        setPlant({ ...plant, [event.target.name]: event.target.value});
     }
 
     return(
-        <form onSubmit={ () => handleUpdateView(plant)}>
+        <form onSubmit={ () => handleUpdate(plant._id)}>
             <label htmlFor="name">Name: </label>
             <input
                 type="text"
@@ -61,7 +75,7 @@ const Update = (props, {handleUpdateView, handleAddPlant}) => {
 
         <br></br>
 
-            <button type="submit">Repot plant</button>
+            <button type="submit" onClick={handleUpdateForm}>Repot plant</button>
         </form>
     )
 }

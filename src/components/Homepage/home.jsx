@@ -1,15 +1,27 @@
 import { useState } from 'react';
-import Show from '../Show/show'
-// import handleDelete from '../../Services/plantService.js'
-const Home = (props) => {
 
-    const {plant, handleDelete, handleAddPlant, showUpdate, setShowUpdate, handleUpdateView, show, setShow} = props
+import Show from '../Show/show';
+import Update from '../Update/update';
+
+// import handleDelete from '../../Services/plantService.js'
+
+const Home = ( props ) => {
+
+    const { handleAddPlant, showUpdate, setShowUpdate, handleUpdateView, show, setShow, plant, setPlant, plantList } = props
+    // const [show, setShow] = useState(false)
+
+
 
     const handleDetails = (id) => {
         setShow(!show)
         console.log (id)
-        }
+    }
         
+    // const plants = plantList.map((plant) => (
+    //     <a key={pet._id} onClick={() => updateShow(plant)}>
+    //         <li>{pet.name}</li>
+    //     </a>
+    // ))
 
     const deletePlant = async (id) => {
     try {
