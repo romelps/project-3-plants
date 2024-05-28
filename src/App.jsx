@@ -94,8 +94,14 @@ const handleSearch = async () => {
   };
 
   //update plant
+  
+
+  // const updateShow = (plant) => {
+  //   setShow(plant)
+  // }
+    
   const handleUpdateView = () => {
-    if(!plant.name) setShowCard(null);
+    if(!plant.name) setShow(null);
     setShowUpdate(!showUpdate);
   }
 
@@ -120,7 +126,6 @@ const handleSearch = async () => {
               <Home 
               id='home' 
               plant = {plant} 
-              handleDelete={handleDelete}
               {...{handleAddPlant}}/>
 
             ))}
@@ -128,29 +133,33 @@ const handleSearch = async () => {
       </main> 
         : null}
 
-{/* //       {showIndex ? (
-//         <Index 
-//         id='index'
-//         plant={plant} 
-//         plantList={plantList}
+{/* //       {showIndex ? ( */}
+{/* //         <Index  */}
+{/* //         id='index' */}
+{/* //         plant={plant}  */}
+{/* //         plantList={plantList} */}
        
-//         {...{handleAddPlant}}/>
+{/* //         {...{handleAddPlant}}/> */}
         
-//       ) : null} */}
+{/* //       ) : null}  */}
 
 
       {isCreateOpen ? (
         <Create 
         id='create'
         plant={plant}
-        handleAddPlant={handleAddPlant}  />
+        handleAddPlant={handleAddPlant} 
+        />
       ): null}
 
       {showUpdate ? (
         <Update
         id='update'
         plant={plant}
-        handleUpdate={handleUpdate}
+        handleUpdateView={handleUpdateView}
+        handleAddPlant={handleAddPlant}
+        show={show}
+        setShow={setShow}
         />
       ): null}
       
@@ -158,15 +167,14 @@ const handleSearch = async () => {
 
    
       
-{/* //       <Show 
-//       id='show' 
-//       plant = {plant}
-//       name= {plant.name}
-//       size= {plant.size}
-//       health= {plant.health}
-//       family= {plant.family}
-   
-//       />: null}  */}
+{/*       <Show 
+       id='show' 
+       plant = {plant}
+       name= {plant.name}
+       size= {plant.size}
+       health= {plant.health}
+       family= {plant.family}
+          />: null}  */}
 
 
       {showSearch ?
