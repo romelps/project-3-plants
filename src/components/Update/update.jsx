@@ -35,7 +35,7 @@ const Update = (props) => {
                 name="name"
                 id="name"
                 // value={plant.name}
-                default={plant.name}
+                defaultValue={plant.name}
                 onChange={handleChange}
             />
 
@@ -46,7 +46,7 @@ const Update = (props) => {
                 type="text"
                 name="size"
                 id="size"
-                default={plant.size}
+                defaultValue={plant.size}
                 onChange={handleChange}
             />
 
@@ -57,7 +57,7 @@ const Update = (props) => {
                 type="text"
                 name="health"
                 id="health"
-                default={plant.health}
+                defaultValue={plant.health}
                 onChange={handleChange}
             />
 
@@ -68,7 +68,7 @@ const Update = (props) => {
                 type="text"
                 name="family"
                 id="family"
-                default={plant.family}
+                defaultValue={plant.family}
                 onChange={handleChange}
             />
 
