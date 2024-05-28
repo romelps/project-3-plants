@@ -11,6 +11,7 @@ const Index = (props) => {
                     {plant.name}
                     {plant.id}
                     {plant.health}
+                    {plant.size}
                 </li>
             ))}
             </ul>

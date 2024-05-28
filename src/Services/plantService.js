@@ -12,6 +12,17 @@ const index = async() => {
     }
 };
 
+const deletePlant = async (id) => {
+    try {
+        const res = await fetch(`http://3.141.46.99:3015/plants//${id}`, {
+            method: 'DELETE',
+        });
+        const deletedPlant = await res.json();
+        return deletedPlant;
+    } catch(err) {
+        console.log(err)
+    }
+}
 
 
 const create = async (plant) => {
@@ -44,5 +55,5 @@ const create = async (plant) => {
 // }
 
 
-export { index, create }
+export { index, create, deletePlant }
 

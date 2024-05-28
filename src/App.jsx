@@ -24,6 +24,9 @@ const App = () => {
   const [showCard, setShowCard] = useState([]);
   const [showIndex, setShowIndex] = useState(false);
   const [showUpdate, setShowUpdate] = useState(false);
+  const [selected, setSelected] = useState(null);
+
+
 
 
 
@@ -33,10 +36,24 @@ const handleInputChange = (event) => {
   setSearch(event.target.value)
 }
 
-//
+
 const handleDelete = async (id) => {
-  await PlantService.destroy(id);
+  try {
+    const deletedPlant = await PlantService.deletePlant(id);
+  
+  if (deletedPlant.error) {
+    throw new Error(deletePlant.error);
+  }
+
+  setPlantList(plantList.filter((plant) => plant._id !== deletedPlant._id));
+  setSelected(null);
+  setIsFormOpen(false);
+  } catch (error) {
+  console.log(error);
+  }
 }
+
+
 
 const handleSearch = async () => {
   const URL = `http://3.141.46.99:3015/plants/${search}`
@@ -86,7 +103,8 @@ const handleSearch = async () => {
     <>
       <Nav 
         // handleCreateView={handleCreateView}
-        isCreateOpen={isCreateOpen} 
+        isCreateOpen={isCreateOpen}
+        setIsCreateOpen={setIsCreateOpen} 
         showSearch={showSearch}
         setShowSearch={setShowSearch}
         showIndex = {showIndex}
@@ -102,6 +120,7 @@ const handleSearch = async () => {
               <Home 
               id='home' 
               plant = {plant} 
+              handleDelete={handleDelete}
               {...{handleAddPlant}}/>
 
             ))}
@@ -109,7 +128,7 @@ const handleSearch = async () => {
       </main> 
         : null}
 
-//       {showIndex ? (
+{/* //       {showIndex ? (
 //         <Index 
 //         id='index'
 //         plant={plant} 
@@ -117,7 +136,7 @@ const handleSearch = async () => {
        
 //         {...{handleAddPlant}}/>
         
-//       ) : null}
+//       ) : null} */}
 
 
       {isCreateOpen ? (
@@ -139,7 +158,7 @@ const handleSearch = async () => {
 
    
       
-//       <Show 
+{/* //       <Show 
 //       id='show' 
 //       plant = {plant}
 //       name= {plant.name}
@@ -147,7 +166,7 @@ const handleSearch = async () => {
 //       health= {plant.health}
 //       family= {plant.family}
    
-//       />: null} 
+//       />: null}  */}
 
 
       {showSearch ?
@@ -156,6 +175,7 @@ const handleSearch = async () => {
         handleInputChange={handleInputChange} 
         handleSearch={handleSearch} 
         searchPlants={searchPlants}
+        handleDelete={handleDelete}
       />: null}
 
       {searchPlants ? 
