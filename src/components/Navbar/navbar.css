@@ -1,4 +1,4 @@
 nav {
-    background-color: rgb(14, 183, 85);
-    
+    display: flex;
+    justify-content: left;
 }
