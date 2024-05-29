@@ -143,7 +143,7 @@ const handleSearch = async () => {
         showIndex = {showIndex}
         setShowIndex = {setShowIndex}
       />
-      <h1>Welcome to your garden </h1>
+      <h1>Welcome to our greenhouse! </h1>
       <h3>Please use the navigation bar to log your plant (plant a seed!), see the plants we have in our virtual garden, or eutheanize a not so healthy one.</h3>
       
       {showIndex ?
