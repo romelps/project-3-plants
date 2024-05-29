@@ -39,7 +39,7 @@ const Nav = ({showSearch, setShowSearch, isCreateOpen, setIsCreateOpen, showInde
 
                     <button id="search" onClick={handleSearchOnClick}>Search</button>
 
-                    <button id="update">Update</button>
+                    
                 </ul>
             </nav>        
         </>

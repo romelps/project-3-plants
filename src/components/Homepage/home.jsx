@@ -7,10 +7,10 @@ import Update from '../Update/update';
 
 const Home = ( props ) => {
 
-    const { handleAddPlant,  show, setShow, plant, setPlant, plantList, handleDelete, handleUpdate } = props
+    const { show, setShow, plant, setPlant, plantList, handleDelete, handleUpdate } = props
     // const [show, setShow] = useState(false)
     const [showUpdate, setShowUpdate] = useState(false);
-
+    
 
     const handleDetails = (id) => {
         setShow(!show)
@@ -45,17 +45,19 @@ const deletePlant = async (id) => {
     
         <li id={plant._id}>
             
-            <h3>{plant.name}<br/><button onClick={()=> {handleDetails(plant._id)}}>View Details</button></h3>
+            <h3>{plant.name}<br/></h3>
             {show ?
             <Show 
             id='show' 
             plant = {plant}
+            plantList={plantList}
             name= {plant.name}
             size= {plant.size}
             health= {plant.health}
             family= {plant.family}
             />: null}
 
+            <button onClick={()=> {handleDetails(plant._id)}}>View Details</button>
             <button onClick={() => {handleDelete(plant._id)}}>Euthanize</button>
             <button onClick={() => {handleUpdateView(plant._id)}}>Repot</button>
 
