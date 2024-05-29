@@ -1,4 +1,4 @@
-
+import './navbar.css'
 import React, {useState} from 'react';
 
 const Nav = ({showSearch, setShowSearch, isCreateOpen, setIsCreateOpen, showIndex, setShowIndex}) => {
