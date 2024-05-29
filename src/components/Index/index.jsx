@@ -1,3 +1,4 @@
+import './index.css'
 const Index = (props) => {
     const { plant, plantList } = props
 

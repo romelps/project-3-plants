@@ -25,9 +25,6 @@ const Nav = ({showSearch, setShowSearch, isCreateOpen, setIsCreateOpen, showInde
             <nav>
                 <ul>
 
-                    <button><a href='#home'>Garden</a></button>
-
-
                     {/* buttons changing when component used */}
                     <button onClick={handleCreateView}><a href='#create'>
                         {isCreateOpen ? 'Dig Up Seed' : 'Plant Seed'}
