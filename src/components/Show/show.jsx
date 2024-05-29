@@ -1,9 +1,9 @@
 import {useState} from 'react';
 
 
-const Show = ({plant}) => {
+const Show = ({plant, plantList}) => {
 
-    
+   
 
     return(
        <>
