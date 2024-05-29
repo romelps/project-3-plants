@@ -39,15 +39,15 @@ const create = async (plant) => {
             //received on the backend as req.body
             body: JSON.stringify(plant),
         });
-        return renderToStaticMarkup.json();
+        return res.json();
     } catch(err){
-        console.log('Caught error')
+        console.log('Caught error', err)
     }
 }
 
-const update = async (plant, plantId) => {
+const update = async (plant, id) => {
     try {
-        const res = await fetch(`${BASE_URL}/${plantId}`, {
+        const res = await fetch(`${BASE_URL}/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json',
@@ -71,5 +71,5 @@ const update = async (plant, plantId) => {
 // }
 
 
-export { index, create, deletePlant}
 
+export { index, create, deletePlant, update }

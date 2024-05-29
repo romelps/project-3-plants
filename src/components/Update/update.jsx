@@ -1,28 +1,41 @@
 import { useState } from 'react'
+// import { update } from './Services/plantService.js'
+// src/Services/plantService.js
 
-const Update = (props, {handleUpdateView, handleAddPlant}) => {
+const Update = (props) => {
 
-    const [plant, setPlant] = useState({
+    const {handleUpdateView, handleAddPlant, handleUpdate, show, setShow, plant, setPlant} = props
+
+    const [updatedPlant, setUpdatedPlant] = useState({
         name: '',
         size: '',
         health: '',
         family: '',
     })
 
+    // const [plant, setPlant] = useState(show ? show : initialState)
+
     const handleUpdateForm = (event) => {
         event.preventDefault();
-        props.handleAddPlant(plant);
-        // setPlant({ ...plant, [event.target.name]: event.target.value});
+        console.log(updatedPlant)
+        handleUpdate(updatedPlant, plant._id);
+       
+       // setPlant({ ...plant, [event.target.name]: event.target.value});
+    };
+
+    const handleChange = (event) => {
+       setUpdatedPlant({ ...updatedPlant, [event.target.name]: event.target.value});
     }
 
     return(
-        <form onSubmit={ () => handleUpdateView(plant)}>
+        <form onSubmit={ () => handleUpdate(plant._id)}>
             <label htmlFor="name">Name: </label>
             <input
                 type="text"
                 name="name"
                 id="name"
-                value={plant.name}
+                // value={plant.name}
+                defaultValue={plant.name}
                 onChange={handleChange}
             />
 
@@ -33,7 +46,7 @@ const Update = (props, {handleUpdateView, handleAddPlant}) => {
                 type="text"
                 name="size"
                 id="size"
-                value={plant.size}
+                defaultValue={plant.size}
                 onChange={handleChange}
             />
 
@@ -44,7 +57,7 @@ const Update = (props, {handleUpdateView, handleAddPlant}) => {
                 type="text"
                 name="health"
                 id="health"
-                value={plant.health}
+                defaultValue={plant.health}
                 onChange={handleChange}
             />
 
@@ -55,13 +68,13 @@ const Update = (props, {handleUpdateView, handleAddPlant}) => {
                 type="text"
                 name="family"
                 id="family"
-                value={plant.family}
+                defaultValue={plant.family}
                 onChange={handleChange}
             />
 
         <br></br>
 
-            <button type="submit">Repot plant</button>
+            <button type="submit" onClick={handleUpdateForm}>Repot plant</button>
         </form>
     )
 }

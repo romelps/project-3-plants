@@ -21,14 +21,14 @@ const App = () => {
   const [search, setSearch] = useState('')
   const [searchPlants, setSearchPlants] = useState(null);
   const [showSearch, setShowSearch] = useState(false);
-  const [showCard, setShowCard] = useState([]);
+  // const [showCard, setShowCard] = useState([]);
   const [showIndex, setShowIndex] = useState(false);
-  const [showUpdate, setShowUpdate] = useState(false);
+  // const [showUpdate, setShowUpdate] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false)
+  const [show, setShow] = useState(false)
+
   const [selected, setSelected] = useState(null);
   const [show, setShow] = useState(null);
-
-
-
 
   
  //handles the changes in the search bar
@@ -77,6 +77,10 @@ const handleSearch = async () => {
     };
     fetchPlants();
   }, []);
+  
+  // const updateShow = (plant) => {
+  //   setShow(plant)
+  // }
 
   //adds plant to database (PlantService connects directly to back-end)
   const handleAddPlant = async (plant) => {
@@ -92,18 +96,41 @@ const handleSearch = async () => {
       console.log(error)
     }
   };
+  
+
 
   //update plant
-  
+  const handleUpdate = async (plant, id) => {
+    console.log(id)
+    try {
+      const updatedPlant = await PlantService.update(plant, id);
+
+      //potential errors
+      if(updatedPlant.error) {
+        throw new Error(updatedPlant.error);
+      }
+
+      const updatedPlantList = plantList.map((plant) =>
+    
+        //if the id of the current is not the same as the updated id, return existing plant
+        plant._id !== updatedPlant._id ? plant : updatedPlant
+      );
+
+      //update plant list
+      setPlantList(updatedPlantList);
+      setShow(updatedPlant);
+      setShowUpdate(false);
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // const updateShow = (plant) => {
   //   setShow(plant)
   // }
     
-  const handleUpdateView = () => {
-    if(!plant.name) setShow(null);
-    setShowUpdate(!showUpdate);
-  }
+ 
 
   return (
     <>
@@ -126,6 +153,7 @@ const handleSearch = async () => {
               <Home 
               id='home' 
               plant = {plant} 
+<<<<<<< HEAD
               handleDelete={handleDelete}
               show={show}
               setShow={setShow}
@@ -134,7 +162,22 @@ const handleSearch = async () => {
               showUpdate={showUpdate}
               
               {...{handleAddPlant}}/>
+=======
+>>>>>>> ae30167a71b044c8804a969854f92cd86a1055be
 
+              {...{handleAddPlant}}
+              // showUpdate={showUpdate}
+              // setShowUpdate={setShowUpdate}
+              // handleUpdateView={handleUpdateView}
+              show={show}
+              setShow={setShow}
+              // updateShow={updateShow}
+              plantList={plantList}
+              handleDelete={handleDelete}
+              handleUpdate={handleUpdate}
+              />
+
+        
             ))}
           </ul>
       </main> 
@@ -159,29 +202,31 @@ const handleSearch = async () => {
         />
       ): null}
 
-      {showUpdate ? (
+    {/* {showUpdate ? (
         <Update
         id='update'
         plant={plant}
-        handleUpdateView={handleUpdateView}
+        setPlant={setPlant}
+        // handleUpdateView={handleUpdateView}
         handleAddPlant={handleAddPlant}
+        handleUpdate={handleUpdate}
         show={show}
         setShow={setShow}
         />
-      ): null}
+      ): null} */}
       
-
+      {/* {show ?
+            <Show 
+            id='show' 
+            plant = {plant}
+            name= {plant.name}
+            size= {plant.size}
+            health= {plant.health}
+            family= {plant.family}
+            />: null} */}
 
    
       
-{/*       <Show 
-       id='show' 
-       plant = {plant}
-       name= {plant.name}
-       size= {plant.size}
-       health= {plant.health}
-       family= {plant.family}
-          />: null}  */}
 
 
       {showSearch ?
