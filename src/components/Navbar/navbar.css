@@ -2,3 +2,8 @@ nav {
     display: flex;
     justify-content: left;
 }
+
+#search {
+    color: #646cff;
+}
+
