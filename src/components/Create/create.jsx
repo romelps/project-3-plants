@@ -15,6 +15,7 @@ const Create = ({handleAddPlant}) => {
     }
 
     return(
+
         <fieldset>
             <h2>Input Plant Info: </h2>
         <form onSubmit={ () => handleAddPlant(plant)}>
@@ -65,9 +66,20 @@ const Create = ({handleAddPlant}) => {
             <button type="submit" id='plant-seed'>Plant Seed</button>
             
         </form>
+
         </fieldset>
-        
+
     )
 }
 
 export default Create;
+
+
+
+
+
+
+
+
+
+

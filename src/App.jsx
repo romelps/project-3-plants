@@ -28,7 +28,7 @@ const App = () => {
   const [show, setShow] = useState(false)
 
   const [selected, setSelected] = useState(null);
-
+  
 
   
  //handles the changes in the search bar
@@ -144,7 +144,7 @@ const handleSearch = async () => {
         setShowIndex = {setShowIndex}
       />
       <h1>Welcome to your garden </h1>
-      <p>Please use the navigation bar to log your plant (plant a seed!), see the plants we have in our virtual garden, or eutheanize a not so healthy one.</p>
+      <h3>Please use the navigation bar to log your plant (plant a seed!), see the plants we have in our virtual garden, or eutheanize a not so healthy one.</h3>
       
       {showIndex ?
         <main>

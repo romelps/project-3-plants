@@ -13,6 +13,7 @@ h2 {
     font-size: 40px;
     margin: 20px;
 }
+
 #buttonmod {
     background-color: rgb(14, 143, 85);
     color: whitesmoke;
@@ -21,6 +22,7 @@ h2 {
     padding: 15px;
     margin: 5px;
 }
+
 li {
     list-style-type: none;
     text-decoration: none;
@@ -28,11 +30,10 @@ li {
     border-radius: 12px;
     padding: 10px;
     justify-content: center;
-    margin: 10px;
-    
-    
+    margin: 10px;  
     
 }
+
 .cards {
     margin: 20px;
     border-style: groove;
@@ -40,11 +41,12 @@ li {
     border-width: 20px;
     justify-content: center;
 }
+
+
 main {
     display: flex;
     margin: 20px;
     justify-content: center;
     
-    
-    
 }
+

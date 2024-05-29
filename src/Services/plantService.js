@@ -17,7 +17,7 @@ const deletePlant = async (id) => {
         const deletedPlant = await fetch(`http://3.141.46.99:3015/plants//${id}`, {
             method: 'DELETE',
         });
-        
+
         return deletedPlant.json();
     } catch(err) {
         console.log(err)
