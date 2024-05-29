@@ -7,14 +7,13 @@ const Show = ({plant, plantList}) => {
 
     return(
        <>
-       <ul>
-        <h2>Name: {plant.name}</h2>
-        <p>Size: {plant.size}</p>
-        <p>Health: {plant.health}</p>
-        <p>Family: {plant.family}</p>
+       <li>
+        <h3>Size: {plant.size}</h3>
+        <h3>Health: {plant.health}</h3>
+        <h3>Family: {plant.family}</h3>
         {/* <button onClick={() => props.handleUpdateView(props.selected)}>Repot</button>
         <button onClick={() => props.handleDelete(props.selected)}>Euthanize</button> */}
-       </ul>
+       </li>
        </>
     )
 }
