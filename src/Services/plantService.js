@@ -1,4 +1,4 @@
-import { renderToStaticMarkup } from "react-dom/server";
+// import { renderToStaticMarkup } from "react-dom/server";
 const BASE_URL = `http://3.141.46.99:3015/plants`;
 // const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/plants`;
 

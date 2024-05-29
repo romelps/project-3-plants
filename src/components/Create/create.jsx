@@ -23,7 +23,7 @@ const Create = ({handleAddPlant}) => {
                 id="name"
                 value={plant.name}
                 onChange={handleChange}
-            /><br />
+            />
 
             <br></br>
 
@@ -58,7 +58,7 @@ const Create = ({handleAddPlant}) => {
                 onChange={handleChange}
             />
 
-        <br></br>
+            <br></br>
 
             <button type="submit">Plant Seed</button>
         </form>
