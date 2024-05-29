@@ -14,7 +14,7 @@ const Create = ({handleAddPlant}) => {
     }
 
     return(
-        
+
         <form onSubmit={ () => handleAddPlant(plant)}>
             <label htmlFor="name">Name: </label>
             <input
@@ -62,8 +62,18 @@ const Create = ({handleAddPlant}) => {
 
             <button type="submit">Plant Seed</button>
         </form>
-        
+
     )
 }
 
 export default Create;
+
+
+
+
+
+
+
+
+
+
