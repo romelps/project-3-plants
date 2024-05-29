@@ -1,0 +1,50 @@
+.home {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  
+    
+}
+
+h2 {
+    color: rgb(14, 143, 85);
+    text-align: center;
+    font-size: 40px;
+    margin: 20px;
+}
+#buttonmod {
+    background-color: rgb(14, 143, 85);
+    color: whitesmoke;
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 5px;
+}
+li {
+    list-style-type: none;
+    text-decoration: none;
+    background-color: darkslategrey;
+    border-radius: 12px;
+    padding: 10px;
+    justify-content: center;
+    margin: 10px;
+    
+    
+    
+}
+.cards {
+    margin: 20px;
+    border-style: groove;
+    border-color: rgb(182, 207, 19);
+    border-width: 20px;
+    justify-content: center;
+}
+main {
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+    
+    
+    
+}

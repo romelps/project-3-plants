@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import Show from '../Show/show';
 import Update from '../Update/update';
+import './home.css'
 
 // import handleDelete from '../../Services/plantService.js'
 
@@ -42,10 +43,10 @@ const deletePlant = async (id) => {
 
     return(
         <>
-    
-        <li id={plant._id}>
+    <div class='home'>
+        <li class='cards' id={plant._id}>
             
-            <h3>{plant.name}<br/></h3>
+            <h2>{plant.name}<br/></h2>
             {show ?
             <Show 
             id='show' 
@@ -57,9 +58,9 @@ const deletePlant = async (id) => {
             family= {plant.family}
             />: null}
 
-            <button onClick={()=> {handleDetails(plant._id)}}>View Details</button>
-            <button onClick={() => {handleDelete(plant._id)}}>Euthanize</button>
-            <button onClick={() => {handleUpdateView(plant._id)}}>Repot</button>
+            <button id='buttonmod' onClick={()=> {handleDetails(plant._id)}}>View Details</button>
+            <button id='buttonmod' onClick={() => {handleDelete(plant._id)}}>Euthanize</button>
+            <button id='buttonmod' onClick={() => {handleUpdateView(plant._id)}}>Repot</button>
 
             {showUpdate ? (
                 <Update
@@ -88,6 +89,7 @@ const deletePlant = async (id) => {
                 </li>
             ))}
         </ul>           */}
+        </div>
         </>
     );
 };

@@ -10,16 +10,16 @@ input:hover {
     background-color: rgb(190, 45, 79);
 }
 
-fieldset {
-    background-color:darkslategray;
+#updateSheet {
+    background-color: rgb(4, 100, 100);
     border-radius: 12px;
-    border-width: 50px;
+    border-width: 30px;
     border-color:  rgb(14, 183, 86); 
     color: whitesmoke;
     
 }
 
-#plant-seed {
+#repot-seed {
     background-color:  rgb(182, 207, 19);
     margin: 5px;
 }

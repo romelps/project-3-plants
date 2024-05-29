@@ -1,6 +1,7 @@
 import { useState } from 'react'
 // import { update } from './Services/plantService.js'
 // src/Services/plantService.js
+import './update.css'
 
 const Update = (props) => {
 
@@ -28,6 +29,7 @@ const Update = (props) => {
     }
 
     return(
+        <fieldset id='updateSheet'>
         <form onSubmit={ () => handleUpdate(plant._id)}>
             <label htmlFor="name">Name: </label>
             <input
@@ -74,8 +76,9 @@ const Update = (props) => {
 
         <br></br>
 
-            <button type="submit" onClick={handleUpdateForm}>Repot plant</button>
+            <button id='repot-seed' type="submit" onClick={handleUpdateForm}>Repot plant</button>
         </form>
+        </fieldset>
     )
 }
 
