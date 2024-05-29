@@ -34,11 +34,11 @@ const deletePlant = async (id) => {
             method: 'DELETE',
         });
         
-//         return deletedPlant.json();
-//     } catch(err) {
-//         console.log(err)
-//     }
-// }
+        return deletedPlant.json();
+    } catch(err) {
+        console.log(err)
+    }
+}
 
     return(
         <>

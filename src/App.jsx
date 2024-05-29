@@ -28,7 +28,7 @@ const App = () => {
   const [show, setShow] = useState(false)
 
   const [selected, setSelected] = useState(null);
-  const [show, setShow] = useState(null);
+  
 
   
  //handles the changes in the search bar
@@ -153,17 +153,6 @@ const handleSearch = async () => {
               <Home 
               id='home' 
               plant = {plant} 
-<<<<<<< HEAD
-              handleDelete={handleDelete}
-              show={show}
-              setShow={setShow}
-              handleUpdateView={handleUpdateView}
-              setShowUpdate={setShowUpdate}
-              showUpdate={showUpdate}
-              
-              {...{handleAddPlant}}/>
-=======
->>>>>>> ae30167a71b044c8804a969854f92cd86a1055be
 
               {...{handleAddPlant}}
               // showUpdate={showUpdate}
