@@ -146,21 +146,18 @@ const handleSearch = async () => {
       <h1>Welcome to our greenhouse! </h1>
       <h3>Please use the navigation bar to log your plant (plant a seed!), see the plants we have in our virtual garden, or eutheanize a not so healthy one.</h3>
       
+
+      {/* here we iterate over the plant list to create the index */}
       {showIndex ?
         <main>
           <ul>
             {plantList.map((plant) => (
               <Home 
               id='home' 
-              plant = {plant} 
-
+              plant = {plant}
               {...{handleAddPlant}}
-              // showUpdate={showUpdate}
-              // setShowUpdate={setShowUpdate}
-              // handleUpdateView={handleUpdateView}
               show={show}
               setShow={setShow}
-              // updateShow={updateShow}
               plantList={plantList}
               handleDelete={handleDelete}
               handleUpdate={handleUpdate}
@@ -191,32 +188,7 @@ const handleSearch = async () => {
         />
       ): null}
 
-    {/* {showUpdate ? (
-        <Update
-        id='update'
-        plant={plant}
-        setPlant={setPlant}
-        // handleUpdateView={handleUpdateView}
-        handleAddPlant={handleAddPlant}
-        handleUpdate={handleUpdate}
-        show={show}
-        setShow={setShow}
-        />
-      ): null} */}
-      
-      {/* {show ?
-            <Show 
-            id='show' 
-            plant = {plant}
-            name= {plant.name}
-            size= {plant.size}
-            health= {plant.health}
-            family= {plant.family}
-            />: null} */}
-
-   
-      
-
+ 
 
       {showSearch ?
       <Search

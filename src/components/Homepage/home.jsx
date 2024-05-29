@@ -10,8 +10,10 @@ import './home.css'
 
 const Home = ( props ) => {
 
-    const { show, setShow, plant, setPlant, plantList, handleDelete, handleUpdate } = props
-    // const [show, setShow] = useState(false)
+    const { plant, setPlant, plantList, handleDelete, handleUpdate } = props
+
+    //show and set show should not be brought in as props bc now it's on the compontent level, affects one at a time
+    const [show, setShow] = useState(false)
     const [showUpdate, setShowUpdate] = useState(false);
     
 
@@ -19,12 +21,7 @@ const Home = ( props ) => {
         setShow(!show)
         console.log (id)
     }
-        
-    // const plants = plantList.map((plant) => (
-    //     <a key={pet._id} onClick={() => updateShow(plant)}>
-    //         <li>{pet.name}</li>
-    //     </a>
-    // ))
+    
 
     const handleUpdateView = () => {
         // if(!plant.name) setShow(null);
@@ -43,9 +40,7 @@ const deletePlant = async (id) => {
     }
 }
 
-    return(
-        <>
-
+    return (
         
     <div class='home'>
         <li class='cards' id={plant._id}>
@@ -73,31 +68,21 @@ const deletePlant = async (id) => {
                 id='update'
                 plant={plant}
                 setPlant={setPlant}
-                // handleUpdateView={handleUpdateView}
-                // handleAddPlant={handleAddPlant}
+                
                 handleUpdate={handleUpdate}
-                // show={show}
-                // setShow={setShow}
+               
                 />
             ): null}
             
-            {/* <p>Health: {plant.health}</p>
-            <p>Size: {plant.size}</p>
-            <p>Family: {plant.family}</p> */}
+          
 
         </li>
        
             
-        {/* <ul>
-            {plantList.map((plant, i) =>(
-                <li key={i}>
-                    { plant.name }
-                </li>
-            ))}
-        </ul>           */}
+      
         </div>
 
-        </>
+        
     );
 };
 

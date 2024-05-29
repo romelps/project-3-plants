@@ -36,8 +36,7 @@ const Update = (props) => {
                 type="text"
                 name="name"
                 id="name"
-                // value={plant.name}
-                defaultValue={plant.name}
+                defaultValue={plant.name} //leaves the value in the input
                 onChange={handleChange}
             />
 

@@ -6,3 +6,13 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
+Fill your greenhouse
+Unit 3 project
+PROJECT URL: 
+https://github.com/romelps/project-3-plants.git
+
+PROJECT DESCRIPTION:
+Here you can add each new plant and record it's information. Input the name, health, size, and family of your plant and change it at any time.
+
