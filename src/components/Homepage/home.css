@@ -12,7 +12,6 @@ h2 {
     text-align: center;
     font-size: 40px;
     margin: 20px;
-
 }
 
 #buttonmod {
@@ -31,11 +30,10 @@ li {
     border-radius: 12px;
     padding: 10px;
     justify-content: center;
-    margin: 10px;
-    
-    
+    margin: 10px;  
     
 }
+
 .cards {
     margin: 20px;
     border-style: groove;
@@ -44,11 +42,11 @@ li {
     justify-content: center;
 }
 
+
 main {
     display: flex;
     margin: 20px;
     justify-content: center;
     
-    
-    
 }
+

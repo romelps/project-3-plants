@@ -2,7 +2,9 @@ import { useState } from 'react';
 
 import Show from '../Show/show';
 import Update from '../Update/update';
-import './home.css';
+
+import './home.css'
+
 
 // import handleDelete from '../../Services/plantService.js'
 
@@ -43,11 +45,13 @@ const deletePlant = async (id) => {
 
     return(
         <>
+
         
     <div class='home'>
         <li class='cards' id={plant._id}>
             
             <h2>{plant.name}</h2>
+
             {show ?
             <Show 
             id='show' 
@@ -92,7 +96,7 @@ const deletePlant = async (id) => {
             ))}
         </ul>           */}
         </div>
-        
+
         </>
     );
 };

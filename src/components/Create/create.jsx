@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import './create.css'
 
 const Create = ({handleAddPlant}) => {
 
@@ -15,8 +16,10 @@ const Create = ({handleAddPlant}) => {
 
     return(
 
+        <fieldset>
+            <h2>Input Plant Info: </h2>
         <form onSubmit={ () => handleAddPlant(plant)}>
-            <label htmlFor="name">Name: </label>
+            <label htmlFor="name">Name </label><br></br>
             <input
                 type="text"
                 name="name"
@@ -27,7 +30,7 @@ const Create = ({handleAddPlant}) => {
 
             <br></br>
 
-            <label htmlFor="Size">Size: </label>
+            <label htmlFor="Size">Size </label><br></br>
             <input
                 type="text"
                 name="size"
@@ -38,7 +41,7 @@ const Create = ({handleAddPlant}) => {
 
             <br></br>
 
-            <label htmlFor="health">Health: </label>
+            <label htmlFor="health">Health </label><br></br>
             <input
                 type="text"
                 name="health"
@@ -49,7 +52,7 @@ const Create = ({handleAddPlant}) => {
 
             <br></br>
 
-            <label htmlFor="family">Plant Family: </label>
+            <label htmlFor="family">Plant Family </label><br></br>
             <input
                 type="text"
                 name="family"
@@ -60,8 +63,11 @@ const Create = ({handleAddPlant}) => {
 
             <br></br>
 
-            <button type="submit">Plant Seed</button>
+            <button type="submit" id='plant-seed'>Plant Seed</button>
+            
         </form>
+
+        </fieldset>
 
     )
 }

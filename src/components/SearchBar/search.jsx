@@ -1,3 +1,4 @@
+
 import './search.css';
 
 const Search = (props) => {
@@ -9,7 +10,9 @@ const Search = (props) => {
             Search for a plant (by ID):
                 <input type="text" onChange={handleInputChange}/>
                 <button id='buttonmod' onClick={handleSearch}>Search</button>
+
         </div>
+
         </>
     )
 }
